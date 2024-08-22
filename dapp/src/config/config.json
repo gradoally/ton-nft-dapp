@@ -1,0 +1,290 @@
+{
+  "NftCollection": {
+    "defaultAddress": "",
+    "tabName": "",
+    "sendFunctions": {
+      "sendDeploy": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendMintNft": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "queryId": {
+            "fieldTitle": ""
+          },
+          "amount": {
+            "fieldTitle": ""
+          },
+          "itemIndex": {
+            "fieldTitle": ""
+          },
+          "itemOwnerAddress": {
+            "fieldTitle": ""
+          },
+          "name": {
+            "fieldTitle": ""
+          },
+          "description": {
+            "fieldTitle": ""
+          },
+          "image": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendChangeOwner": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "queryId": {
+            "fieldTitle": ""
+          },
+          "newOwnerAddress": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendAddToWhitelist": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "address": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendAddToBlacklist": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "address": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendRemoveFromWhitelist": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "address": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendRemoveFromBlacklist": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "address": {
+            "fieldTitle": ""
+          }
+        }
+      }
+    },
+    "getFunctions": {
+      "getCollectionData": {
+        "tabName": "",
+        "params": {},
+        "outNames": []
+      },
+      "getNftAddressByIndex": {
+        "tabName": "",
+        "params": {
+          "index": {
+            "fieldTitle": ""
+          }
+        },
+        "outNames": []
+      },
+      "getUserStatus": {
+        "tabName": "",
+        "params": {
+          "address": {
+            "fieldTitle": ""
+          }
+        },
+        "outNames": []
+      }
+    },
+    "definedTypes": {
+      "RoyaltyParams": {
+        "shownName": "",
+        "properties": {
+          "royaltyFactor": {
+            "fieldTitle": ""
+          },
+          "royaltyBase": {
+            "fieldTitle": ""
+          },
+          "royaltyAddress": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "NftCollectionConfig": {
+        "shownName": "",
+        "properties": {
+          "index": {
+            "fieldTitle": ""
+          },
+          "ownerAddress": {
+            "fieldTitle": ""
+          },
+          "nextItemIndex": {
+            "fieldTitle": ""
+          },
+          "collectionContent": {
+            "fieldTitle": ""
+          },
+          "nftItemCode": {
+            "fieldTitle": ""
+          },
+          "royaltyParams": {
+            "fieldTitle": ""
+          },
+          "adminAddress": {
+            "fieldTitle": ""
+          }
+        }
+      }
+    }
+  },
+  "NftFactory": {
+    "defaultAddress": "",
+    "tabName": "",
+    "sendFunctions": {
+      "sendDeploy": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendDeployNFTCollection": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "index": {
+            "fieldTitle": ""
+          },
+          "nftItemCode": {
+            "fieldTitle": ""
+          },
+          "name": {
+            "fieldTitle": ""
+          },
+          "description": {
+            "fieldTitle": ""
+          },
+          "image": {
+            "fieldTitle": ""
+          },
+          "royaltyFactor": {
+            "fieldTitle": ""
+          },
+          "royaltyBase": {
+            "fieldTitle": ""
+          },
+          "royaltyDestination": {
+            "fieldTitle": ""
+          },
+          "adminAddress": {
+            "fieldTitle": ""
+          }
+        }
+      },
+      "sendChangeOwner": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          },
+          "newOwner": {
+            "fieldTitle": ""
+          }
+        }
+      }
+    },
+    "getFunctions": {
+      "getOwnerAddress": {
+        "tabName": "",
+        "params": {},
+        "outNames": []
+      },
+      "getCollectionAddress": {
+        "tabName": "",
+        "params": {
+          "index": {
+            "fieldTitle": ""
+          }
+        },
+        "outNames": []
+      }
+    },
+    "definedTypes": {
+      "NftFactoryConfig": {
+        "shownName": "",
+        "properties": {
+          "index": {
+            "fieldTitle": ""
+          },
+          "ownerAddress": {
+            "fieldTitle": ""
+          },
+          "nftCollectionCode": {
+            "fieldTitle": ""
+          }
+        }
+      }
+    }
+  },
+  "NftItem": {
+    "defaultAddress": "",
+    "tabName": "",
+    "sendFunctions": {
+      "sendDeploy": {
+        "tabName": "",
+        "params": {
+          "value": {
+            "fieldTitle": ""
+          }
+        }
+      }
+    },
+    "getFunctions": {},
+    "definedTypes": {
+      "NftItemConfig": {
+        "shownName": "",
+        "properties": {
+          "0": {
+            "fieldTitle": ""
+          },
+          "1": {
+            "fieldTitle": ""
+          }
+        }
+      }
+    }
+  }
+}

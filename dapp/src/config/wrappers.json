@@ -1,0 +1,302 @@
+{
+  "NftCollection": {
+    "sendFunctions": {
+      "sendDeploy": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        }
+      },
+      "sendMintNft": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "queryId": {
+          "type": "number",
+          "optional": false
+        },
+        "amount": {
+          "type": "bigint",
+          "optional": false
+        },
+        "itemIndex": {
+          "type": "number",
+          "optional": false
+        },
+        "itemOwnerAddress": {
+          "type": "Address",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "description": {
+          "type": "string",
+          "optional": false
+        },
+        "image": {
+          "type": "string",
+          "optional": false
+        }
+      },
+      "sendChangeOwner": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "queryId": {
+          "type": "bigint",
+          "optional": false
+        },
+        "newOwnerAddress": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "sendAddToWhitelist": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "address": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "sendAddToBlacklist": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "address": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "sendRemoveFromWhitelist": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "address": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "sendRemoveFromBlacklist": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "address": {
+          "type": "Address",
+          "optional": false
+        }
+      }
+    },
+    "getFunctions": {
+      "getCollectionData": {},
+      "getNftAddressByIndex": {
+        "index": {
+          "type": "bigint",
+          "optional": false
+        }
+      },
+      "getUserStatus": {
+        "address": {
+          "type": "Address",
+          "optional": false
+        }
+      }
+    },
+    "path": "./wrappers/NftCollection.ts",
+    "deploy": {
+      "canBeCreatedFromConfig": true,
+      "configType": {
+        "index": {
+          "type": "number",
+          "optional": false
+        },
+        "ownerAddress": {
+          "type": "Address",
+          "optional": false
+        },
+        "nextItemIndex": {
+          "type": "number",
+          "optional": false
+        },
+        "collectionContent": {
+          "type": "Cell",
+          "optional": false
+        },
+        "nftItemCode": {
+          "type": "Cell",
+          "optional": false
+        },
+        "royaltyParams": {
+          "type": "RoyaltyParams",
+          "optional": false
+        },
+        "adminAddress": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "codeHex": "b5ee9c7241021901000394000114ff00f4a413f4bcf2c80b0102016202100202cd030b020120040a01f7420c700915be001d0d3030171b0915be0fa403001d31fd33f22c0008e2c6c31ed44d0d31f01f861d33f30f863fa4001f862d401f864d401f865d401f866fa4001f867f40430f868f003e0ed44d0d31f01f861fa4001f862d33f01f863d401f864d401f865d401f866fa4001f867f40430f8688210693d39505230ba80502fe8e283031f846d08210a8cb00ad708010c8cb055005cf1624fa0214cb6a13cb1fcb3f01cf16c98040fb00e03121c001e30221c0028e49317032d4308e3e8040f4966fa5208e3004a4208100fabe93f2c18fde81019321a0f8435230bbf2f4f84503fa00d43023034555f006f843ba95f843a4f863de02926c21e2b3e65bf003060700c631f848522001f901018307f40e6fa193d30130923070e220c0008e1371c8cb01c9d003f901f84810248307f416f8689132e221c00193f2c194de21c0023001c00393f2c193ded33ff84312bbf2e192f843f84502fa00d4301023f006f843a4f863f00302f0e0f84213c705f2e19120c003935bf003e020c0048e1930fa4001f862d33f01f863d401f864d401f865d430f866f003e020c0058e1730fa403072c8cb01c9d001f901f8488307f416f868f003e020c0068e1730fa403073c8cb01c9d001f901f8488307f416f868f003e020c007e302c008e30230840ff2f00809002230fa4030f901f8488307f45b30f868f0030020fa4030f901f8488307f45b30f868f00300435f848f846f845f844f843f841c8cb1ff842cf16cb3fccccccf847cf16f400c9ed5480201200c0f0201200d0e002d007232cffe0a33c5b25c083232c044fd003d0032c03260001b3e401d3232c084b281f2fff27420003d45af0047021f005778018c8cb0558cf165004fa0213cb6b12ccccc971fb008020120111802012012130007b8b5d31802012014150069b5dafda89a1a63e03f0c3f48003f0c5a67e03f0c7a803f0c9a803f0cba803f0cdf48003f0cfe80861f0d1f08da1a61fa61ff4806100201621617007cab89ed44d0d31f01f861fa4001f862d33f01f863d401f864d401f865d401f866fa4001f867f40430f868f84801f901018307f40e6fa193d30130923070e20064aba3ed44d0d31f01f861fa4001f862d33f01f863d401f864d401f865d401f866fa4001f867f40430f868f845f0047001f0050061bc82df6a268698f80fc30fd2000fc31699f80fc31ea00fc326a00fc32ea00fc337d2000fc33fa02187c347c21fc227c214b4fc7d86"
+    },
+    "definedTypes": {
+      "RoyaltyParams": {
+        "royaltyFactor": {
+          "type": "number",
+          "optional": false
+        },
+        "royaltyBase": {
+          "type": "number",
+          "optional": false
+        },
+        "royaltyAddress": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "NftCollectionConfig": {
+        "index": {
+          "type": "number",
+          "optional": false
+        },
+        "ownerAddress": {
+          "type": "Address",
+          "optional": false
+        },
+        "nextItemIndex": {
+          "type": "number",
+          "optional": false
+        },
+        "collectionContent": {
+          "type": "Cell",
+          "optional": false
+        },
+        "nftItemCode": {
+          "type": "Cell",
+          "optional": false
+        },
+        "royaltyParams": {
+          "type": "RoyaltyParams",
+          "optional": false
+        },
+        "adminAddress": {
+          "type": "Address",
+          "optional": false
+        }
+      }
+    }
+  },
+  "NftFactory": {
+    "sendFunctions": {
+      "sendDeploy": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        }
+      },
+      "sendDeployNFTCollection": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "index": {
+          "type": "number",
+          "optional": false
+        },
+        "nftItemCode": {
+          "type": "Cell",
+          "optional": false
+        },
+        "name": {
+          "type": "string",
+          "optional": false
+        },
+        "description": {
+          "type": "string",
+          "optional": false
+        },
+        "image": {
+          "type": "string",
+          "optional": false
+        },
+        "royaltyFactor": {
+          "type": "number",
+          "optional": false
+        },
+        "royaltyBase": {
+          "type": "number",
+          "optional": false
+        },
+        "royaltyDestination": {
+          "type": "Address",
+          "optional": false
+        },
+        "adminAddress": {
+          "type": "Address",
+          "optional": false
+        }
+      },
+      "sendChangeOwner": {
+        "value": {
+          "type": "bigint",
+          "optional": false
+        },
+        "newOwner": {
+          "type": "Address",
+          "optional": false
+        }
+      }
+    },
+    "getFunctions": {
+      "getOwnerAddress": {},
+      "getCollectionAddress": {
+        "index": {
+          "type": "bigint",
+          "optional": false
+        }
+      }
+    },
+    "path": "./wrappers/NftFactory.ts",
+    "deploy": {
+      "canBeCreatedFromConfig": true,
+      "configType": {
+        "index": {
+          "type": "number",
+          "optional": false
+        },
+        "ownerAddress": {
+          "type": "Address",
+          "optional": false
+        },
+        "nftCollectionCode": {
+          "type": "Cell",
+          "optional": false
+        }
+      },
+      "codeHex": "b5ee9c7241020b010001d6000114ff00f4a413f4bcf2c80b0102016202080202cd030501f7d1910e38048adf068698180b8d848adf07d2018107f101800e98fe99f98f6a268698f80fc30e98f80fc317d2000fc31ea187c3210e000c7213610e98ffc2129105df970c97c2129105dc70c7c21527c317c227c217c20e4658fe58ffc21e78b6664f6aa6f6a6a6a7d207a027a021878037c227c2182a23209f803f0404005601c0028e20f84312c705f2e191fa4030f863f844f842f841c8cb1fcb1ff843cf16ccc9ed54e05b840ff2f0020158060700951b48a0c1fd219be94ca44063859c7232c07274150800e0c1fd059444e0c1fd1f1be94cba0c0c8820c1fd219be94ca44063859cb232c0727415080120c1fd05944860c1fd1f1be94cba16e000b5141d9c00b232c7c4b2cff25c083232c044fd003d0032c0325c087e401d3232c084b281f2fff2741c083232c7f2cfd401b3c5853304b333140133c584bd00325de0063232c15400f3c5a082bebc203e8084b2dac4b333325c7ec020020158090a0035bbfbbed44d0d31f01f861d31f01f862fa4001f863d430f864f8438007fba6cfed44d0d31f01f861d31f01f862fa4001f863d430f86470f844127002c8cb1f12cb3fc97020c8cb0113f400f400cb00c9f90074c8cb0212ca07cbffc9d08ae6f6faf"
+    },
+    "definedTypes": {
+      "NftFactoryConfig": {
+        "index": {
+          "type": "number",
+          "optional": false
+        },
+        "ownerAddress": {
+          "type": "Address",
+          "optional": false
+        },
+        "nftCollectionCode": {
+          "type": "Cell",
+          "optional": false
+        }
+      }
+    }
+  }
+}
