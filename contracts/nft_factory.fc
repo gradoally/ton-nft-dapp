@@ -1,0 +1,90 @@
+#include "imports/stdlib.fc";
+#include "imports/params.fc";
+global int factory_index;
+global int next_collection_index;
+global slice owner_address;
+global cell nft_collection_code;
+() save_data() impure inline {
+    set_data(
+        begin_cell()
+            .store_uint(factory_index, 32)
+            .store_uint(next_collection_index, 32)
+            .store_slice(owner_address)
+            .store_ref(nft_collection_code)
+        .end_cell()); }
+() load_data() impure inline {
+    slice ds = get_data().begin_parse();
+    factory_index = ds~load_uint(32); next_collection_index = ds~load_uint(32); owner_address = ds~load_msg_addr(); nft_collection_code = ds~load_ref(); }
+cell calculate_collection_state_init(int index, cell nft_collection_code) inline {
+    cell data = begin_cell().store_uint(index, 32).store_uint(0, 64).end_cell();
+    return (begin_cell().store_uint(0, 2).store_dict(nft_collection_code).store_dict(data).store_uint(0, 1).end_cell()); }
+slice calculate_collection_address(int wc, cell state_init) inline {
+    return begin_cell().store_uint(4, 3).store_int(wc, 8).store_uint(cell_hash(state_init), 256).end_cell().begin_parse(); }
+cell create_users_cell(cell whitelist, cell blacklist) {
+    cell users = new_dict();
+    (int key, slice value, int found) = whitelist.udict_get_min?(256);
+    while (found) {
+        users~udict_set(256, key, begin_cell().store_uint(1, 2).end_cell().begin_parse());
+        (key, value, found) = whitelist.udict_get_next?(256, key); }
+    (key, value, found) = blacklist.udict_get_min?(256);
+    while (found) {
+        users~udict_set(256, key, begin_cell().store_uint(2, 2).end_cell().begin_parse());
+        (key, value, found) = blacklist.udict_get_next?(256, key); }
+    return users; }
+() deploy_nft_collection(
+    int index, cell nft_collection_code, 
+    slice owner_address, cell content, cell nft_item_code, cell royalty_params_cell, slice admin_address, cell users
+    ) impure {
+    cell state_init = calculate_collection_state_init(index, nft_collection_code);
+    slice nft_collection_address = calculate_collection_address(0, state_init);
+    cell msg_body =
+        begin_cell()
+            .store_uint(0, 32) ;; op
+            .store_uint(0, 64) ;; query_id
+            .store_slice(owner_address) ;; owner_address
+            .store_ref(content) ;; content
+            .store_ref(nft_item_code) ;; nft_item_code
+            .store_ref(royalty_params_cell) ;; royalty_params_cell
+            .store_slice(admin_address) ;; admin_address
+            .store_dict(users)
+        .end_cell();
+    var msg =
+        begin_cell()
+            .store_uint(0x18, 6)
+            .store_slice(nft_collection_address)
+            .store_coins(50000000) ;; 0.05 TON
+            .store_uint(4 + 2 + 1, 1 + 4 + 4 + 64 + 32 + 1 + 1 + 1)
+            .store_ref(state_init)
+            .store_ref(msg_body);
+    send_raw_message(msg.end_cell(), 1); }
+() recv_internal(int msg_value, cell in_msg_full, slice in_msg_body) impure {
+    if (in_msg_body.slice_empty?()) { return (); }
+    slice cs = in_msg_full.begin_parse();
+    int flags = cs~load_uint(4);
+    if (flags & 1) { return (); }
+    slice sender_address = cs~load_msg_addr();
+    ~dump(sender_address);
+    int op = in_msg_body~load_uint(32);
+    int query_id = in_msg_body~load_uint(64);
+    load_data();
+    if (op == 1) { ;; deploy new NFT collection
+        int index = in_msg_body~load_uint(32);
+        throw_unless(402, index <= next_collection_index);
+        if (index <= next_collection_index) { next_collection_index += 1; save_data(); } 
+        cell nft_item_code = in_msg_body~load_ref();
+        cell content = in_msg_body~load_ref();
+        cell royalty_params_cell = in_msg_body~load_ref();
+        slice admin_address = in_msg_body~load_msg_addr();
+        cell whitelist = in_msg_body~load_dict();
+        cell blacklist = in_msg_body~load_dict();
+        cell users = create_users_cell(whitelist, blacklist);
+        deploy_nft_collection(index, nft_collection_code, owner_address, content, nft_item_code, royalty_params_cell, admin_address, users);
+        return (); }
+    if (op == 2) { ;; change owner
+        throw_unless(401, equal_slices(sender_address, owner_address));
+        owner_address = in_msg_body~load_msg_addr();
+        save_data(); return (); }
+    throw(0xffff); }
+slice get_owner_address() method_id { load_data(); return owner_address; }
+slice get_collection_addr(int index) method_id {
+    load_data(); return calculate_collection_address(workchain(), calculate_collection_state_init(index, nft_collection_code)); }
