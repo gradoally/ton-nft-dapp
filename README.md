@@ -5,7 +5,7 @@ Deployer of NFT Collections with White & Black lists for NFT Airdrop claiming wi
 ## How to use
 
 ```bash
-git clone https://github.com/gradoally/nft-factory.git
+git clone https://github.com/gradoally/ton-nft-dapp.git
 npm i
 ```
 
