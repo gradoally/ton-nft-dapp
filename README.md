@@ -1,26 +1,22 @@
-# OnChainMetadataTutorial
+# TON NFT DAPP
 
-## Project structure
-
--   `contracts` - source code of all the smart contracts of the project and their dependencies.
--   `wrappers` - wrapper classes (implementing `Contract` from ton-core) for the contracts, including any [de]serialization primitives and compilation functions.
--   `tests` - tests for the contracts.
--   `scripts` - scripts used by the project, mainly the deployment scripts.
+New version of [ton_nft_dapp](https://github.com/gradoally/ton_nft_dapp) that can be used as a Scalable NFT Airdrop System with White & Black lists implemented. We consider it a strong foundation for the further development of NFT technology. It provides for deploying NFT Collection through The NFT Factory smart-contract with additional functionality of data-storage and processing with-in dictionaries. We are convinced that this technology is quite universal and is suitable for further development of the idea of decentralized tokenized applications. It reveals new possibilities for blockchain parsing from frontend and data processing on the side of NFT Collection and NFT Factory. This is a real next step in crypto and can be scaled to multiple decentralized apps, such as on-chain order books, factoring, lines of credit, events managing systems, [mysterious databases](https://github.com/gradoally/ton_nft_dapp), [freelance-exchanges](https://github.com/gradoally/a-careers-smc) and moreover! We are glad to open this code for community, pull/partnership/investment/relations requests are [welcome](http://t.me/sraibaby).
 
 ## How to use
 
-### Build
+```bash
+git clone https://github.com/gradoally/ton-nft-dapp.git
+npm i
+```
 
-`npx blueprint build` or `yarn blueprint build`
+Deploy through script:
 
-### Test
+```bash
+npx blueprint run
+```
 
-`npx blueprint test` or `yarn blueprint test`
+Deploy through Scaffold:
 
-### Deploy or run another script
-
-`npx blueprint run` or `yarn blueprint run`
-
-### Add a new contract
-
-`npx blueprint create ContractName` or `yarn blueprint create ContractName`
+```bash
+cd dapp && yarn && yarn dev
+```
