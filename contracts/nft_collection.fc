@@ -109,7 +109,7 @@ int check_user_status(slice address, cell users) impure inline {
     if (op == op::batch_nft_deploy) { ;; batch deploy of new nfts
       int counter = 0;
       cell deploy_list = in_msg_body~load_ref();
-      do { var (item_index, item, f?) = deploy_list~udict::delete_get_min(64);
+      do { var (item_index, item, f?) = deploy_list~udict_delete_get_min(64);
         if (f?) { counter += 1;
             if (counter >= 250) { throw(399); }
             throw_unless(403 + counter, item_index <= next_item_index);
